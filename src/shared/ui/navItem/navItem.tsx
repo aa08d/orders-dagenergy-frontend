@@ -3,7 +3,7 @@ import styles from './navItem.module.scss';
 import { NavLink } from 'react-router-dom';
 
 
-interface NavItemProps {
+export interface NavItemProps {
     href: string;
     icon: React.ReactNode;
     text: string;
