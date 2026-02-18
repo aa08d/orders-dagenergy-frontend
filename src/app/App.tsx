@@ -3,6 +3,8 @@ import { Sidebar } from 'widgets/sidebar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styles from './App.module.scss';
 
+import '../index.css'
+
 
 export const App: FC = () => {
     return (
