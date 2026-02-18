@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import styles from './navItem.module.scss';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 interface NavItemProps {
@@ -9,14 +9,20 @@ interface NavItemProps {
     text: string;
 }
 
-export const NavItem: FC<NavItemProps> = ({
-        href,
-        icon,
-    }) => (
-    <li className={styles.navItem}>
-        <a href={href} className={`${styles.navLink} ${isActive ? styles.active : ''}`}>
-            {icon}
-            <span className={styles.navLinkText}>{text}</span>
-        </a>
-    </li>
-);
+
+export const NavItem: FC<NavItemProps> = ({ href, icon, text }) => {
+    return (
+        <li className={styles.navItem}>
+            <NavLink
+                to={href}
+                className={({ isActive }) =>
+                    `${styles.navLink} ${isActive ? styles.active : ''}`
+                }
+                end={href === '/'}
+            >
+                {icon}
+                <span className={styles.navLinkText}>{text}</span>
+            </NavLink>
+        </li>
+    );
+};
