@@ -1,6 +1,7 @@
 import type { FC } from 'react';
 import { Sidebar } from 'widgets/sidebar';
 import { Header } from 'widgets/header';
+import { ComingSoon } from "pages/comingSoon";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import styles from './App.module.scss';
 
@@ -16,12 +17,12 @@ export const App: FC = () => {
                     <Header />
                     <main className={styles.content}>
                         <Routes>
-                            <Route path="/" element={<div>Dashboard</div>} />
+                            <Route path="/" element={<ComingSoon />} />
                             <Route path="/orders" element={<div>Orders</div>} />
-                            <Route path="/tasks" element={<div>Tasks</div>} />
-                            <Route path="/statistics" element={<div>Statistics</div>} />
-                            <Route path="/documents" element={<div>Documents</div>} />
-                            <Route path="/settings" element={<div>Settings</div>} />
+                            <Route path="/tasks" element={<ComingSoon />} />
+                            <Route path="/statistics" element={<ComingSoon />} />
+                            <Route path="/documents" element={<ComingSoon />} />
+                            <Route path="/settings" element={<ComingSoon />} />
                         </Routes>
                     </main>
                 </div>
