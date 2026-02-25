@@ -1,0 +1,168 @@
+// ─── Avatar button ─────────────────────────────────────────────────────────
+.wrapper {
+  position: relative;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px 6px 4px 4px;
+  border-radius: 8px;
+  transition: background 0.12s;
+
+  &:hover {
+    background: var(--bg-hover);
+  }
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-text);
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.info {
+  text-align: left;
+}
+
+.name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.role {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.chevron {
+  color: var(--text-muted);
+  display: flex;
+  margin-left: 2px;
+  transition: transform 0.15s;
+}
+
+.chevronOpen {
+  composes: chevron;
+  transform: rotate(180deg);
+}
+
+// ─── Dropdown ──────────────────────────────────────────────────────────────
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 200px;
+  background: var(--dropdown-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--dropdown-shadow);
+  padding: 6px;
+  z-index: 100;
+  animation: dropIn 0.12s ease;
+}
+
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+.dropHeader {
+  padding: 8px 10px 10px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 4px;
+}
+
+.dropName {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+.dropRole {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.dropDept {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--accent);
+  margin: 5px 0 0;
+  font-weight: 500;
+}
+
+.dropItem {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-sub);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: left;
+  transition: background 0.1s, color 0.1s;
+
+  &:hover {
+    background: var(--dropdown-item-hover);
+    color: var(--text);
+  }
+}
+
+.dropItemDanger {
+  composes: dropItem;
+  color: var(--status-rejected-color);
+
+  &:hover {
+    background: var(--status-rejected-bg);
+    color: var(--status-rejected-color);
+  }
+}
+
+.dropDivider {
+  height: 1px;
+  background: var(--border);
+  margin: 4px 0;
+}
+
+// ─── Login button ──────────────────────────────────────────────────────────
+.loginBtn {
+  padding: 7px 16px;
+  background: var(--accent);
+  color: var(--accent-text);
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.15s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

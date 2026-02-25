@@ -1,0 +1,13 @@
+.badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.new      { composes: badge; background: var(--status-new-bg);      color: var(--status-new-color);      }
+.inwork   { composes: badge; background: var(--status-inwork-bg);    color: var(--status-inwork-color);   }
+.approval { composes: badge; background: var(--status-approval-bg);  color: var(--status-approval-color); }
+.done     { composes: badge; background: var(--status-done-bg);      color: var(--status-done-color);     }
+.rejected { composes: badge; background: var(--status-rejected-bg);  color: var(--status-rejected-color); }

@@ -1,0 +1,251 @@
+// ─── Toolbar ───────────────────────────────────────────────────────────────
+.toolbar {
+  margin-bottom: 14px;
+}
+
+.toolbarRow {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  max-width: 340px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-placeholder);
+  pointer-events: none;
+  display: flex;
+}
+
+.search {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  outline: none;
+  background: var(--bg-input);
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+
+  &:focus {
+    border-color: var(--accent);
+  }
+}
+
+// ─── Filter button ─────────────────────────────────────────────────────────
+.filterBtn {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  background: var(--bg-input);
+  color: var(--text-sub);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+
+  &:hover {
+    border-color: var(--text-sub);
+  }
+}
+
+.filterBtnActive {
+  composes: filterBtn;
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.filterDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.filterDotActive {
+  composes: filterDot;
+  background: var(--logo-text);
+}
+
+// ─── Filter panel ──────────────────────────────────────────────────────────
+.filterPanel {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 14px 16px;
+  background: var(--bg-filter-panel);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  flex-wrap: wrap;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.select {
+  padding: 6px 10px;
+  border: 1px solid var(--border-input);
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--text-sub);
+  background: var(--bg-input);
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+  min-width: 150px;
+}
+
+.resetBtn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  min-width: 100px;
+
+  &:hover {
+    color: var(--text-sub);
+  }
+}
+
+// ─── Table wrapper ─────────────────────────────────────────────────────────
+.tableWrap {
+  background: var(--bg-table);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: background 0.2s;
+}
+
+.tableScroll {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+// ─── Head ──────────────────────────────────────────────────────────────────
+.thead {
+  background: var(--bg-table-head);
+  border-bottom: 1px solid var(--border);
+}
+
+.th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 500;
+  color: var(--text-sub);
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.thSortable {
+  composes: th;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text);
+  }
+}
+
+.thInner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.sortIcon {
+  color: var(--border);
+  display: flex;
+}
+
+.sortIconActive {
+  composes: sortIcon;
+  color: var(--accent);
+}
+
+// ─── Body ──────────────────────────────────────────────────────────────────
+.tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.1s;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background: var(--bg-table-row-hover);
+  }
+}
+
+.trClickable {
+  composes: tr;
+  cursor: pointer;
+}
+
+.td {
+  padding: 11px 14px;
+  color: var(--text-sub);
+}
+
+.tdId {
+  composes: td;
+  color: var(--text-muted);
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.tdName {
+  composes: td;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.tdAddress {
+  composes: td;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tdResponsible {
+  composes: td;
+  font-weight: 500;
+}
+
+.tdDate {
+  composes: td;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.empty {
+  padding: 48px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}

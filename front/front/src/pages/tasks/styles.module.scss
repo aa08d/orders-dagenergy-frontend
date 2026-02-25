@@ -1,0 +1,25 @@
+.page {
+  flex: 1;
+  padding: 28px 32px;
+  min-width: 0;
+  background: var(--bg);
+  transition: background 0.2s;
+}
+
+.header {
+  margin-bottom: 22px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}

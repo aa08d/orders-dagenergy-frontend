@@ -1,0 +1,318 @@
+.page {
+  flex: 1;
+  padding: 28px 32px;
+  min-width: 0;
+  background: var(--bg);
+  transition: background 0.2s;
+}
+
+.header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.periodPicker {
+  display: flex;
+  gap: 8px;
+}
+
+.periodSelect {
+  padding: 8px 12px;
+  border: 1px solid var(--border-input);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--bg-input);
+  outline: none;
+  cursor: pointer;
+
+  &:focus {
+    border-color: var(--accent);
+  }
+}
+
+// Summary cards
+.summary {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.summaryCard {
+  flex: 1;
+  min-width: 120px;
+  background: var(--bg-table);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: background 0.2s;
+}
+
+.summaryValue {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1;
+}
+
+.summaryLabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 6px 0 0;
+}
+
+// Chart sections
+.chartSection {
+  background: var(--bg-table);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 16px;
+  transition: background 0.2s;
+}
+
+.chartTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+// Bar chart (status)
+.barChart {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  height: 220px;
+  padding-bottom: 24px;
+}
+
+.barGroup {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.barTrack {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 180px;
+}
+
+.bar {
+  width: 60%;
+  min-height: 4px;
+  border-radius: 6px 6px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 6px;
+  transition: height 0.4s ease;
+  position: relative;
+}
+
+.barVal {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.barLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.3;
+  max-width: 100%;
+  word-break: break-word;
+}
+
+// Department horizontal bars
+.deptChart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.deptRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.deptName {
+  font-size: 12.5px;
+  color: var(--text-sub);
+  width: 200px;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.deptBarWrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deptSegments {
+  flex: 1;
+  display: flex;
+  height: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--bg-table-head);
+}
+
+.deptSegment {
+  height: 100%;
+  transition: width 0.4s ease;
+}
+
+.deptTotal {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 24px;
+  text-align: right;
+}
+
+// Legend
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+// Employee table
+.empTable {
+  overflow-x: auto;
+}
+
+.empHeader {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background: var(--bg-table-head);
+  border-radius: 8px;
+  margin-bottom: 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.empRow {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.1s;
+
+  &:hover {
+    background: var(--bg-table-row-hover);
+  }
+}
+
+.empName {
+  flex: 2;
+  min-width: 180px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.empAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.empFullName {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+  margin: 0;
+}
+
+.empRole {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.empStat {
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.empCount {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.empCountZero {
+  color: var(--text-muted);
+}
+
+.empTotal {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 14px;
+}
