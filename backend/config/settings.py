@@ -123,12 +123,12 @@ SIMPLE_JWT = {
 # Add your server's domain/IP here via the CSRF_TRUSTED_ORIGINS env variable.
 CSRF_TRUSTED_ORIGINS = os.getenv(
     "CSRF_TRUSTED_ORIGINS",
-    "http://localhost,http://127.0.0.1",
+    "http://localhost,http://127.0.0.1,http://45.147.176.51",
 ).split(",")
 
 CORS_ALLOWED_ORIGINS = os.getenv(
     "CORS_ALLOWED_ORIGINS",
-    "http://localhost,http://localhost:80,http://localhost:5173",
+    "http://localhost,http://localhost:80,http://localhost:5173,http://45.147.176.51",
 ).split(",")
 CORS_ALLOW_CREDENTIALS = True
 
