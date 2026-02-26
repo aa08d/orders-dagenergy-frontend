@@ -118,6 +118,14 @@ SIMPLE_JWT = {
 }
 
 # ── CORS ───────────────────────────────────────────────────────────────────────
+# ── CSRF ───────────────────────────────────────────────────────────────────────
+# Required when Django runs behind a reverse proxy (nginx).
+# Add your server's domain/IP here via the CSRF_TRUSTED_ORIGINS env variable.
+CSRF_TRUSTED_ORIGINS = os.getenv(
+    "CSRF_TRUSTED_ORIGINS",
+    "http://localhost,http://127.0.0.1",
+).split(",")
+
 CORS_ALLOWED_ORIGINS = os.getenv(
     "CORS_ALLOWED_ORIGINS",
     "http://localhost,http://localhost:80,http://localhost:5173",
