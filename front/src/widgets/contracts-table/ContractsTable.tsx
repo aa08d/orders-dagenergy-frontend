@@ -46,7 +46,7 @@ export const ContractsTable = () => {
   const baseData = useMemo(() =>
     isAdmin
       ? contracts
-      : contracts.filter(c => c.departmentId === user?.departmentId),
+      : contracts.filter(c => c.departmentId === String(user?.departmentId)),
     [isAdmin, user?.departmentId, contracts]
   );
 

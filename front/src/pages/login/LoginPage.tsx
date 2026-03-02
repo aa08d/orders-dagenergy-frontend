@@ -5,7 +5,7 @@ import { EMPLOYEES } from '@shared/mock';
 import s from './styles.module.scss';
 
 interface LoginPageProps {
-  onLogin: (user: { id: string; name: string; role: string; departmentId: string; isAdmin: boolean }) => void;
+  onLogin: (username: string, password: string) => Promise<void>;
 }
 
 export const LoginPage = ({ onLogin }: LoginPageProps) => {
@@ -33,13 +33,7 @@ export const LoginPage = ({ onLogin }: LoginPageProps) => {
     );
 
     if (employee) {
-      onLogin({
-        id: employee.id,
-        name: employee.name,
-        role: employee.role,
-        departmentId: employee.departmentId,
-        isAdmin: employee.role === 'Администратор',
-      });
+      await onLogin(username, password);
     } else {
       setError('Неверный логин или пароль');
       setLoading(false);

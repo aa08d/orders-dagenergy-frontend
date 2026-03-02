@@ -29,6 +29,7 @@ export interface Employee {
 }
 
 export interface Contract {
+  [key: string]: unknown;
   id: string;
   name: string;
   address: string;

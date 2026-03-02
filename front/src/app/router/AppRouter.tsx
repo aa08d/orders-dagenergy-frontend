@@ -7,7 +7,7 @@ import { TasksPage } from '@pages/tasks';
 import { StatsPage } from '@pages/stats';
 import { StubPage } from '@pages/home';
 import { LoginPage } from '@pages/login';
-import type { User } from '@app/providers';
+import { ThemeProvider, AuthProvider, useAuth } from '@app/providers';
 import s from './styles.module.scss';
 
 const AppLayout = () => {
@@ -35,8 +35,7 @@ const AuthGate = () => {
   const { user, login } = useAuth();
 
   if (!user) {
-    const handleLogin = (u: User) => login(u);
-    return <LoginPage onLogin={handleLogin} />;
+    return <LoginPage onLogin={login} />;
   }
 
   return <AppLayout />;

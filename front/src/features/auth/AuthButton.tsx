@@ -21,7 +21,7 @@ export const AuthButton = () => {
   if (!user) return null;
 
   const dept = !user.isAdmin
-    ? DEPARTMENTS.find(d => d.id === user.departmentId)
+    ? DEPARTMENTS.find(d => d.id === String(user.departmentId))
     : null;
 
   return (

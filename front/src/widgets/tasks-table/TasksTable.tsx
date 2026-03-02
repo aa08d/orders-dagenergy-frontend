@@ -42,7 +42,7 @@ export const TasksTable = () => {
   // Фильтрация по отделению: администратор видит всё, остальные — только своё
   const baseTasks = useMemo(() => {
     const active = tasks.filter(c => c.status === 'Согласование' || c.status === 'В работе');
-    return isAdmin ? active : active.filter(c => c.departmentId === user?.departmentId);
+    return isAdmin ? active : active.filter(c => c.departmentId === String(user?.departmentId));
   }, [isAdmin, user?.departmentId, tasks]);
 
   const filtered = useMemo(() => {
