@@ -62,10 +62,7 @@ export interface Contract {
   responsibleEpu?: string;
   responsibleEpuPhone?: string;
   // Meta
-  createdBy?: string;
-  rejectionReason?: string;
-  scanFile?: string | null;
-  scanUploadedAt?: string | null;
+  createdBy?: string; // employee id
 }
 
 export type Theme = 'light' | 'dark';

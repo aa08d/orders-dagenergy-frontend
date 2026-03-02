@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { Icon } from '@shared/ui/Icon';
 import { ThemeToggle } from '@features/theme-toggle';
-import { useAuth } from '@app/providers';
+import { EMPLOYEES } from '@shared/mock';
 import s from './styles.module.scss';
 
-export const LoginPage = () => {
-  const { login } = useAuth();
+interface LoginPageProps {
+  onLogin: (user: { id: string; name: string; role: string; departmentId: string; isAdmin: boolean }) => void;
+}
+
+export const LoginPage = ({ onLogin }: LoginPageProps) => {
   const [username, setUsername]   = useState('');
   const [password, setPassword]   = useState('');
   const [error, setError]         = useState('');
@@ -23,11 +26,22 @@ export const LoginPage = () => {
     setLoading(true);
     setError('');
 
-    try {
-      await login(username.toLowerCase(), password);
-    } catch {
+    await new Promise(r => setTimeout(r, 500));
+
+    const employee = EMPLOYEES.find(
+      e => e.username === username.toLowerCase() && e.password === password
+    );
+
+    if (employee) {
+      onLogin({
+        id: employee.id,
+        name: employee.name,
+        role: employee.role,
+        departmentId: employee.departmentId,
+        isAdmin: employee.role === 'Администратор',
+      });
+    } else {
       setError('Неверный логин или пароль');
-    } finally {
       setLoading(false);
     }
   };

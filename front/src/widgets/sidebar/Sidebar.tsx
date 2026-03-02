@@ -28,7 +28,7 @@ export const Sidebar = () => {
           {visibleItems.map(item => {
             const isActive =
               location.pathname === item.path ||
-              ((item.path as string) !== '/' && location.pathname.startsWith(item.path));
+              (item.path !== '/' && location.pathname.startsWith(item.path));
             return (
               <li key={item.id} className={s.navItem}>
                 <NavLink
