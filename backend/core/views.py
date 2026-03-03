@@ -19,7 +19,7 @@ def login_view(request):
     username = request.data.get("username", "")
     password = request.data.get("password", "")
     try:
-        user = Employee.objects.get(username=username)
+        user = Employee.objects.get(username__iexact=username)
     except Employee.DoesNotExist:
         return Response({"detail": "Неверный логин или пароль."}, status=status.HTTP_401_UNAUTHORIZED)
     if not user.check_password(password):
