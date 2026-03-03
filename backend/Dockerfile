@@ -14,7 +14,6 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-RUN chmod +x /app/entrypoint.sh
 
 # Collect static files at build time (whitenoise serves them, no DB needed)
 RUN DJANGO_SECRET_KEY=build-secret \

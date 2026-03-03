@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { ContractsTable } from '@widgets/contracts-table';
+import type { ContractsTableHandle } from '@widgets/contracts-table/ContractsTable';
 import { AddContractModal } from '@widgets/contracts-table/AddContractModal';
 import { Icon } from '@shared/ui/Icon';
 import type { ConsumerType } from '@shared/types';
@@ -15,6 +16,7 @@ const CONSUMER_TYPES: ConsumerType[] = [
 export const ContractsPage = () => {
   const [showTypeMenu, setShowTypeMenu] = useState(false);
   const [selectedType, setSelectedType] = useState<ConsumerType | null>(null);
+  const tableRef = useRef<ContractsTableHandle>(null);
 
   return (
     <main className={s.page}>
@@ -29,11 +31,8 @@ export const ContractsPage = () => {
           {showTypeMenu && (
             <div className={s.typeMenu}>
               {CONSUMER_TYPES.map(type => (
-                <button
-                  key={type}
-                  className={s.typeMenuItem}
-                  onClick={() => { setSelectedType(type); setShowTypeMenu(false); }}
-                >
+                <button key={type} className={s.typeMenuItem}
+                  onClick={() => { setSelectedType(type); setShowTypeMenu(false); }}>
                   {type}
                 </button>
               ))}
@@ -41,11 +40,14 @@ export const ContractsPage = () => {
           )}
         </div>
       </div>
-      <ContractsTable />
+
+      <ContractsTable ref={tableRef} />
+
       {selectedType && (
         <AddContractModal
           consumerType={selectedType}
           onClose={() => setSelectedType(null)}
+          onSaved={() => { setSelectedType(null); tableRef.current?.reload(); }}
         />
       )}
     </main>

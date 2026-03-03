@@ -1,13 +1,17 @@
 import { useState, useRef, useEffect } from 'react';
 import { useAuth } from '@app/providers';
-import { Icon } from '@shared/ui/Icon';
-import { DEPARTMENTS } from '@shared/mock';
+import { getDepartments } from '@shared/api';
+import { Icon } from '@shared/ui';
+import type { Department } from '@shared/types';
 import s from './styles.module.scss';
 
 export const AuthButton = () => {
   const { user, logout } = useAuth();
   const [open, setOpen]  = useState(false);
-  const ref              = useRef<HTMLDivElement>(null);
+  const [departments, setDepartments] = useState<Department[]>([]);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => { getDepartments().then(setDepartments).catch(() => {}); }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -21,26 +25,18 @@ export const AuthButton = () => {
   if (!user) return null;
 
   const dept = !user.isAdmin
-    ? DEPARTMENTS.find(d => d.id === String(user.departmentId))
+    ? departments.find(d => String(d.id) === String(user.departmentId))
     : null;
 
   return (
     <div className={s.wrapper} ref={ref}>
-      <button
-        onClick={() => setOpen(o => !o)}
-        aria-haspopup="true"
-        aria-expanded={open}
-        aria-label="Меню пользователя"
-        className={s.btn}
-      >
-        <div aria-hidden className={s.avatar}>{user.name[0]}</div>
+      <button onClick={() => setOpen(o => !o)} className={s.btn}>
+        <div className={s.avatar}>{user.name[0]}</div>
         <div className={s.info}>
           <div className={s.name}>{user.name}</div>
           <div className={s.role}>{user.role}</div>
         </div>
-        <span className={open ? s.chevronOpen : s.chevron}>
-          <Icon name="chevronUp" size={12} />
-        </span>
+        <span className={open ? s.chevronOpen : s.chevron}><Icon name="chevronUp" size={12} /></span>
       </button>
 
       {open && (
@@ -48,32 +44,14 @@ export const AuthButton = () => {
           <div className={s.dropHeader}>
             <p className={s.dropName}>{user.name}</p>
             <p className={s.dropRole}>{user.role}</p>
-            {dept && (
-              <p className={s.dropDept}>
-                <Icon name="building" size={12} />
-                {dept.name}
-              </p>
-            )}
+            {dept && <p className={s.dropDept}><Icon name="building" size={12} />{dept.name}</p>}
           </div>
-
-          <button
-            role="menuitem"
-            className={s.dropItem}
-            onClick={() => setOpen(false)}
-          >
-            <Icon name="settings" size={14} />
-            Настройки профиля
+          <button role="menuitem" className={s.dropItem} onClick={() => setOpen(false)}>
+            <Icon name="settings" size={14} />Настройки профиля
           </button>
-
           <div className={s.dropDivider} />
-
-          <button
-            role="menuitem"
-            className={s.dropItemDanger}
-            onClick={() => { setOpen(false); logout(); }}
-          >
-            <Icon name="logout" size={14} />
-            Выйти
+          <button role="menuitem" className={s.dropItemDanger} onClick={() => { setOpen(false); logout(); }}>
+            <Icon name="logout" size={14} />Выйти
           </button>
         </div>
       )}

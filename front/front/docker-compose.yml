@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: energy-app
+    ports:
+      - "80:80"
+    restart: unless-stopped

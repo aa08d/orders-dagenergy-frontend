@@ -7,12 +7,9 @@ import { TasksPage } from '@pages/tasks';
 import { StatsPage } from '@pages/stats';
 import { StubPage } from '@pages/home';
 import { LoginPage } from '@pages/login';
-import { ThemeProvider, AuthProvider, useAuth } from '@app/providers';
 import s from './styles.module.scss';
 
 const AppLayout = () => {
-  const { user } = useAuth();
-
   return (
     <div className={s.layout}>
       <Sidebar />
@@ -22,7 +19,7 @@ const AppLayout = () => {
           <Route path="/"          element={<Navigate to="/contracts" replace />} />
           <Route path="/contracts" element={<ContractsPage />} />
           <Route path="/tasks"     element={<TasksPage />} />
-          {user?.isAdmin && <Route path="/stats" element={<StatsPage />} />}
+          <Route path="/stats"     element={<StatsPage />} />
           <Route path="/docs"      element={<StubPage />} />
           <Route path="/settings"  element={<StubPage />} />
         </Routes>
@@ -32,12 +29,10 @@ const AppLayout = () => {
 };
 
 const AuthGate = () => {
-  const { user, login } = useAuth();
+  const { user, loading } = useAuth();
 
-  if (!user) {
-    return <LoginPage onLogin={login} />;
-  }
-
+  if (loading) return null;
+  if (!user) return <LoginPage />;
   return <AppLayout />;
 };
 

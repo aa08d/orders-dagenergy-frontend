@@ -1,4 +1,30 @@
-export const LIGHT_THEME = {
+export interface AppTheme {
+  bg: string;
+  bgSidebar: string;
+  bgHover: string;
+  bgActive: string;
+  bgTable: string;
+  bgTableHead: string;
+  bgTableRowHover: string;
+  bgPagination: string;
+  bgInput: string;
+  bgFilterPanel: string;
+  border: string;
+  borderInput: string;
+  text: string;
+  textSub: string;
+  textMuted: string;
+  textPlaceholder: string;
+  accent: string;
+  accentText: string;
+  logoText: string;
+  toggleBg: string;
+  toggleColor: string;
+  scrollThumb: string;
+  statusStyles: Record<string, { bg: string; color: string }>;
+}
+
+export const LIGHT_THEME: AppTheme = {
   bg: '#ffffff',
   bgSidebar: '#f7f7f5',
   bgHover: '#ebebea',
@@ -27,10 +53,10 @@ export const LIGHT_THEME = {
     'Согласование': { bg: '#fff8e6', color: '#b07d00' },
     'Завершена':    { bg: '#edfaf1', color: '#1e8a45' },
     'Отклонена':    { bg: '#fdecea', color: '#c0392b' },
-  } as Record<string, { bg: string; color: string }>,
-} as const;
+  },
+};
 
-export const DARK_THEME = {
+export const DARK_THEME: AppTheme = {
   bg: '#191919',
   bgSidebar: '#111111',
   bgHover: '#2a2a2a',
@@ -59,7 +85,6 @@ export const DARK_THEME = {
     'Согласование': { bg: '#2d2500', color: '#d4a82a' },
     'Завершена':    { bg: '#152d1e', color: '#4bc47a' },
     'Отклонена':    { bg: '#2d1515', color: '#e06060' },
-  } as Record<string, { bg: string; color: string }>,
-} as const;
+  },
+};
 
-export type AppTheme = typeof LIGHT_THEME;

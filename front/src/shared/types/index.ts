@@ -29,7 +29,6 @@ export interface Employee {
 }
 
 export interface Contract {
-  [key: string]: unknown;
   id: string;
   name: string;
   address: string;
@@ -63,7 +62,10 @@ export interface Contract {
   responsibleEpu?: string;
   responsibleEpuPhone?: string;
   // Meta
-  createdBy?: string; // employee id
+  createdBy?: string;
+  rejectionReason?: string;
+  scanFile?: string | null;
+  scanUploadedAt?: string | null;
 }
 
 export type Theme = 'light' | 'dark';
